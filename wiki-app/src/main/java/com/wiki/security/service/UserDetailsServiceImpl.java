@@ -1,32 +1,22 @@
-/**
- * 
- */
 package com.wiki.security.service;
 
+import com.wiki.security.entity.Usuario;
+import com.wiki.security.entity.UsuarioPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.wiki.security.entity.PrimaryUser;
-import com.wiki.security.entity.User;
-
-/**
- * @author kevin_orellana
- *
- */
-
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService{
-	
-	@Autowired
-	UserService userService;
+public class UserDetailsServiceImpl implements UserDetailsService {
 
-	@Override
-	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-		User user =  userService.getByUserName(userName).get();
-		return PrimaryUser.build(user);
-	}
+    @Autowired
+    UsuarioService usuarioService;
 
+    @Override
+    public UserDetails loadUserByUsername(String nombreUsuario) throws UsernameNotFoundException {
+        Usuario usuario = usuarioService.getByNombreUsuario(nombreUsuario).get();
+        return UsuarioPrincipal.build(usuario);
+    }
 }

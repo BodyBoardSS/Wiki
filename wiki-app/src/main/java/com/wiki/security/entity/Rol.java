@@ -1,61 +1,39 @@
-/**
- * 
- */
 package com.wiki.security.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.wiki.security.enums.RolNombre;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-import com.wiki.security.enums.RolName;
-
-/**
- * @author kevin_orellana
- *
- */
 @Entity
 public class Rol {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	private RolName rolName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private RolNombre rolNombre;
 
-	/**
-	 * 
-	 */
-	public Rol() {
-		super();
-	}
+    public Rol() {
+    }
 
-	/**
-	 * @param rolName
-	 */
-	public Rol(@NotNull RolName rolName) {
-		super();
-		this.rolName = rolName;
-	}
+    public Rol(@NotNull RolNombre rolNombre) {
+        this.rolNombre = rolNombre;
+    }
 
-	public Integer getId() {
-		return id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public RolName getRolName() {
-		return rolName;
-	}
+    public RolNombre getRolNombre() {
+        return rolNombre;
+    }
 
-	public void setRolName(RolName rolName) {
-		this.rolName = rolName;
-	}
+    public void setRolNombre(RolNombre rolNombre) {
+        this.rolNombre = rolNombre;
+    }
 }

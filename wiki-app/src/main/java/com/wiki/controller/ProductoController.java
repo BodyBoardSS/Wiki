@@ -8,26 +8,25 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/producto")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class ProductoController {
 
     @Autowired
     ProductoService productoService;
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-	@GetMapping("/lista")
+    @GetMapping("/lista")
     public ResponseEntity<List<Producto>> list(){
         List<Producto> list = productoService.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
-    
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+
     @GetMapping("/detail/{id}")
     public ResponseEntity<Producto> getById(@PathVariable("id") int id){
         if(!productoService.existsById(id))
@@ -35,8 +34,7 @@ public class ProductoController {
         Producto producto = productoService.getOne(id).get();
         return new ResponseEntity(producto, HttpStatus.OK);
     }
-    
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+
     @GetMapping("/detailname/{nombre}")
     public ResponseEntity<Producto> getByNombre(@PathVariable("nombre") String nombre){
         if(!productoService.existsByNombre(nombre))
@@ -44,8 +42,8 @@ public class ProductoController {
         Producto producto = productoService.getByNombre(nombre).get();
         return new ResponseEntity(producto, HttpStatus.OK);
     }
-    
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody ProductoDto productoDto){
         if(StringUtils.isBlank(productoDto.getNombre()))
@@ -58,8 +56,8 @@ public class ProductoController {
         productoService.save(producto);
         return new ResponseEntity(new Mensaje("producto creado"), HttpStatus.OK);
     }
-    
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id")int id, @RequestBody ProductoDto productoDto){
         if(!productoService.existsById(id))
@@ -77,8 +75,8 @@ public class ProductoController {
         productoService.save(producto);
         return new ResponseEntity(new Mensaje("producto actualizado"), HttpStatus.OK);
     }
-    
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id")int id){
         if(!productoService.existsById(id))
