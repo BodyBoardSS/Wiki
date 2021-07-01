@@ -5,6 +5,9 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
@@ -19,6 +22,12 @@ import javax.persistence.Table;
 @NamedQuery(name = "InvoiceDetail.findAll", query = "SELECT i FROM InvoiceDetail i")
 public class InvoiceDetail implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@Column(name = "DET_ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int detId;
+	
 
 	@Column(name = "DET_QUANTITY")
 	private BigDecimal detQuantity;
@@ -26,12 +35,10 @@ public class InvoiceDetail implements Serializable {
 	@Column(name = "DET_TOTAL")
 	private BigDecimal detTotal;
 
-	// bi-directional many-to-one association to Invoice
 	@ManyToOne
 	@JoinColumn(name = "DET_INVID")
 	private Invoice invoice;
 
-	// bi-directional many-to-one association to Product
 	@ManyToOne
 	@JoinColumn(name = "DET_PRDID")
 	private Product product;

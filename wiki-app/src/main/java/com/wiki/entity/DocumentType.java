@@ -27,7 +27,6 @@ public class DocumentType implements Serializable {
 	@Column(name = "DCT_DESCRIPTION")
 	private String dctDescription;
 
-	// bi-directional many-to-one association to Document
 	@OneToMany(mappedBy = "documentType")
 	private List<Document> documents;
 

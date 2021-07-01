@@ -27,16 +27,13 @@ public class Document implements Serializable {
 	@Column(name = "DOC_NUMBER")
 	private String docNumber;
 
-	// bi-directional many-to-one association to Customer
 	@OneToMany(mappedBy = "document")
 	private List<Customer> customers;
 
-	// bi-directional many-to-one association to DocumentType
 	@ManyToOne
 	@JoinColumn(name = "DOC_DCTID")
 	private DocumentType documentType;
 
-	// bi-directional many-to-one association to Supplier
 	@OneToMany(mappedBy = "document")
 	private List<Supplier> suppliers;
 

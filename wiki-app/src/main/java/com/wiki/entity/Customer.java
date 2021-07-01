@@ -33,25 +33,20 @@ public class Customer implements Serializable {
 	@Column(name = "CUS_NAME")
 	private String cusName;
 
-	// bi-directional many-to-one association to City
 	@ManyToOne
 	@JoinColumn(name = "CUS_CTYID")
 	private City city;
 
-	// bi-directional many-to-one association to Document
 	@ManyToOne
 	@JoinColumn(name = "CUS_DOCID")
 	private Document document;
 
-	// bi-directional many-to-one association to CustomerAdd
 	@OneToMany(mappedBy = "customer")
 	private List<CustomerAdd> customerAdds;
 
-	// bi-directional many-to-one association to CustomerCel
 	@OneToMany(mappedBy = "customer")
 	private List<CustomerCel> customerCels;
 
-	// bi-directional many-to-one association to Invoice
 	@OneToMany(mappedBy = "customer")
 	private List<Invoice> invoices;
 

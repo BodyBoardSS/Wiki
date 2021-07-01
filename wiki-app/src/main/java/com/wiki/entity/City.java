@@ -25,11 +25,9 @@ public class City implements Serializable {
 	@Column(name = "CTY_NAME")
 	private String ctyName;
 
-	// bi-directional many-to-one association to Customer
 	@OneToMany(mappedBy = "city")
 	private List<Customer> customers;
 
-	// bi-directional many-to-one association to Supplier
 	@OneToMany(mappedBy = "city")
 	private List<Supplier> suppliers;
 
