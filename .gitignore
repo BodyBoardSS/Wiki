@@ -28,3 +28,7 @@ hs_err_pid*
 .classpath
 target
 .tern-project
+
+.iml
+.idea/
+wiki-app.iml
