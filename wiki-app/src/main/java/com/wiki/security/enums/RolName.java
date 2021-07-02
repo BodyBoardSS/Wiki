@@ -1,5 +1,5 @@
 package com.wiki.security.enums;
 
-public enum RolNombre {
+public enum RolName{
     ROLE_ADMIN, ROLE_USER
 }

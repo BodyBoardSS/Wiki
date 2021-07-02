@@ -1,170 +1,87 @@
 package com.wiki.entity;
 
-import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
- * The persistent class for the customer database table.
- * 
+ * @author BodyBoardSS
  */
 @Entity
 @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c")
 public class Customer implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name = "CUS_ID")
-	private int cusId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CUS_ID")
+    private int cusId;
 
-	@Column(name = "CUS_CODE")
-	private String cusCode;
+    @Column(name = "CUS_CODE")
+    private String cusCode;
 
-	@Column(name = "CUS_LASTNAME")
-	private String cusLastname;
+    @Column(name = "CUS_LASTNAME")
+    private String cusLastname;
 
-	@Column(name = "CUS_NAME")
-	private String cusName;
+    @Column(name = "CUS_NAME")
+    private String cusName;
 
-	@ManyToOne
-	@JoinColumn(name = "CUS_CTYID")
-	private City city;
+    @ManyToOne
+    @JoinColumn(name = "CUS_CTYID")
+    private City city;
 
-	@ManyToOne
-	@JoinColumn(name = "CUS_DOCID")
-	private Document document;
+    @ManyToOne
+    @JoinColumn(name = "CUS_CUTID")
+    private CustomerType customerType;
 
-	@OneToMany(mappedBy = "customer")
-	private List<CustomerAdd> customerAdds;
+    public Customer() {
+    }
 
-	@OneToMany(mappedBy = "customer")
-	private List<CustomerCel> customerCels;
+    public int getCusId() {
+        return cusId;
+    }
 
-	@OneToMany(mappedBy = "customer")
-	private List<Invoice> invoices;
+    public void setCusId(int cusId) {
+        this.cusId = cusId;
+    }
 
-	public Customer() {
-	}
+    public String getCusCode() {
+        return cusCode;
+    }
 
-	public int getCusId() {
-		return this.cusId;
-	}
+    public void setCusCode(String cusCode) {
+        this.cusCode = cusCode;
+    }
 
-	public void setCusId(int cusId) {
-		this.cusId = cusId;
-	}
+    public String getCusLastname() {
+        return cusLastname;
+    }
 
-	public String getCusCode() {
-		return this.cusCode;
-	}
+    public void setCusLastname(String cusLastname) {
+        this.cusLastname = cusLastname;
+    }
 
-	public void setCusCode(String cusCode) {
-		this.cusCode = cusCode;
-	}
+    public String getCusName() {
+        return cusName;
+    }
 
-	public String getCusLastname() {
-		return this.cusLastname;
-	}
+    public void setCusName(String cusName) {
+        this.cusName = cusName;
+    }
 
-	public void setCusLastname(String cusLastname) {
-		this.cusLastname = cusLastname;
-	}
+    public City getCity() {
+        return city;
+    }
 
-	public String getCusName() {
-		return this.cusName;
-	}
+    public void setCity(City city) {
+        this.city = city;
+    }
 
-	public void setCusName(String cusName) {
-		this.cusName = cusName;
-	}
+    public CustomerType getCustomerType() {
+        return customerType;
+    }
 
-	public City getCity() {
-		return this.city;
-	}
-
-	public void setCity(City city) {
-		this.city = city;
-	}
-
-	public Document getDocument() {
-		return this.document;
-	}
-
-	public void setDocument(Document document) {
-		this.document = document;
-	}
-
-	public List<CustomerAdd> getCustomerAdds() {
-		return this.customerAdds;
-	}
-
-	public void setCustomerAdds(List<CustomerAdd> customerAdds) {
-		this.customerAdds = customerAdds;
-	}
-
-	public CustomerAdd addCustomerAdd(CustomerAdd customerAdd) {
-		getCustomerAdds().add(customerAdd);
-		customerAdd.setCustomer(this);
-
-		return customerAdd;
-	}
-
-	public CustomerAdd removeCustomerAdd(CustomerAdd customerAdd) {
-		getCustomerAdds().remove(customerAdd);
-		customerAdd.setCustomer(null);
-
-		return customerAdd;
-	}
-
-	public List<CustomerCel> getCustomerCels() {
-		return this.customerCels;
-	}
-
-	public void setCustomerCels(List<CustomerCel> customerCels) {
-		this.customerCels = customerCels;
-	}
-
-	public CustomerCel addCustomerCel(CustomerCel customerCel) {
-		getCustomerCels().add(customerCel);
-		customerCel.setCustomer(this);
-
-		return customerCel;
-	}
-
-	public CustomerCel removeCustomerCel(CustomerCel customerCel) {
-		getCustomerCels().remove(customerCel);
-		customerCel.setCustomer(null);
-
-		return customerCel;
-	}
-
-	public List<Invoice> getInvoices() {
-		return this.invoices;
-	}
-
-	public void setInvoices(List<Invoice> invoices) {
-		this.invoices = invoices;
-	}
-
-	public Invoice addInvoice(Invoice invoice) {
-		getInvoices().add(invoice);
-		invoice.setCustomer(this);
-
-		return invoice;
-	}
-
-	public Invoice removeInvoice(Invoice invoice) {
-		getInvoices().remove(invoice);
-		invoice.setCustomer(null);
-
-		return invoice;
-	}
-
+    public void setCustomerType(CustomerType customerType) {
+        this.customerType = customerType;
+    }
 }

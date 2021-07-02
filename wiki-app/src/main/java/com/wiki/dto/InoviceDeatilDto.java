@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.wiki.dto;
 
 import java.math.BigDecimal;
@@ -17,62 +14,48 @@ public class InoviceDeatilDto {
 
 	private BigDecimal detTotal;
 
+	private BigDecimal detPrice;
+
 	private Invoice invoice;
 	
 	private Product product;
 
-	/**
-	 * @return the detQuantity
-	 */
 	public BigDecimal getDetQuantity() {
 		return detQuantity;
 	}
 
-	/**
-	 * @param detQuantity the detQuantity to set
-	 */
 	public void setDetQuantity(BigDecimal detQuantity) {
 		this.detQuantity = detQuantity;
 	}
 
-	/**
-	 * @return the detTotal
-	 */
 	public BigDecimal getDetTotal() {
 		return detTotal;
 	}
 
-	/**
-	 * @param detTotal the detTotal to set
-	 */
 	public void setDetTotal(BigDecimal detTotal) {
 		this.detTotal = detTotal;
 	}
 
-	/**
-	 * @return the invoice
-	 */
+	public BigDecimal getDetPrice() {
+		return detPrice;
+	}
+
+	public void setDetPrice(BigDecimal detPrice) {
+		this.detPrice = detPrice;
+	}
+
 	public Invoice getInvoice() {
 		return invoice;
 	}
 
-	/**
-	 * @param invoice the invoice to set
-	 */
 	public void setInvoice(Invoice invoice) {
 		this.invoice = invoice;
 	}
 
-	/**
-	 * @return the product
-	 */
 	public Product getProduct() {
 		return product;
 	}
 
-	/**
-	 * @param product the product to set
-	 */
 	public void setProduct(Product product) {
 		this.product = product;
 	}

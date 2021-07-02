@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.wiki.repository;
 
 import java.util.Optional;

@@ -1,7 +1,7 @@
 package com.wiki.security.service;
 
 import com.wiki.security.entity.Rol;
-import com.wiki.security.enums.RolNombre;
+import com.wiki.security.enums.RolName;
 import com.wiki.security.repository.RolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +16,8 @@ public class RolService {
     @Autowired
     RolRepository rolRepository;
 
-    public Optional<Rol> getByRolNombre(RolNombre rolNombre){
-        return rolRepository.findByRolNombre(rolNombre);
+    public Optional<Rol> getByRolName(RolName rolName){
+        return rolRepository.findByRolName(rolName);
     }
 
     public void save(Rol rol){

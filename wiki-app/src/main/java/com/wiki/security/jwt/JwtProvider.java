@@ -1,6 +1,6 @@
 package com.wiki.security.jwt;
 
-import com.wiki.security.entity.UsuarioPrincipal;
+import com.wiki.security.entity.MainUser;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,8 +21,8 @@ public class JwtProvider {
     private int expiration;
 
     public String generateToken(Authentication authentication){
-        UsuarioPrincipal usuarioPrincipal = (UsuarioPrincipal) authentication.getPrincipal();
-        return Jwts.builder().setSubject(usuarioPrincipal.getUsername())
+        MainUser mainUser = (MainUser) authentication.getPrincipal();
+        return Jwts.builder().setSubject(mainUser.getUsername())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(new Date().getTime() + expiration * 1000))
                 .signWith(SignatureAlgorithm.HS512, secret)

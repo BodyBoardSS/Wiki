@@ -3,6 +3,7 @@
  */
 package com.wiki.dto;
 
+import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 
 /**
@@ -10,8 +11,18 @@ import javax.validation.constraints.NotBlank;
  *
  */
 public class CustomerTypeDto {
+	private int cutId;
+
 	@NotBlank
 	private String cutDescription;
+
+	public int getCutId() {
+		return cutId;
+	}
+
+	public void setCutId(int cutId) {
+		this.cutId = cutId;
+	}
 
 	public String getCutDescription() {
 		return cutDescription;

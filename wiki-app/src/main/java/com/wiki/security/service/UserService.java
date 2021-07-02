@@ -1,6 +1,6 @@
 package com.wiki.security.service;
 
-import com.wiki.security.entity.Usuario;
+import com.wiki.security.entity.User;
 import com.wiki.security.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,24 +10,24 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class UsuarioService {
+public class UserService {
 
     @Autowired
     UsuarioRepository usuarioRepository;
 
-    public Optional<Usuario> getByNombreUsuario(String nombreUsuario){
-        return usuarioRepository.findByNombreUsuario(nombreUsuario);
+    public Optional<User> getByUserName(String userName){
+        return usuarioRepository.findByUserName(userName);
     }
 
-    public boolean existsByNombreUsuario(String nombreUsuario){
-        return usuarioRepository.existsByNombreUsuario(nombreUsuario);
+    public boolean existsByUserName(String userName){
+        return usuarioRepository.existsByUserName(userName);
     }
 
     public boolean existsByEmail(String email){
         return usuarioRepository.existsByEmail(email);
     }
 
-    public void save(Usuario usuario){
-        usuarioRepository.save(usuario);
+    public void save(User user){
+        usuarioRepository.save(user);
     }
 }

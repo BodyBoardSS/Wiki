@@ -1,47 +1,42 @@
 package com.wiki.entity;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-
 /**
- * The persistent class for the customer_type database table.
- * 
+ * @author BodyBoardSS
  */
 @Entity
 @Table(name = "customer_type")
 @NamedQuery(name = "CustomerType.findAll", query = "SELECT c FROM CustomerType c")
 public class CustomerType implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name = "CUT_ID")
-	private int cutId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CUT_ID")
+    private int cutId;
 
-	@Column(name = "CUT_DESCRIPTION")
-	private String cutDescription;
+    @Column(name = "CUT_DESCRIPTION")
+    private String cutDescription;
 
-	public CustomerType() {
-	}
+    public CustomerType() {
+    }
 
-	public int getCutId() {
-		return this.cutId;
-	}
+    public int getCutId() {
+        return this.cutId;
+    }
 
-	public void setCutId(int cutId) {
-		this.cutId = cutId;
-	}
+    public void setCutId(int cutId) {
+        this.cutId = cutId;
+    }
 
-	public String getCutDescription() {
-		return this.cutDescription;
-	}
+    public String getCutDescription() {
+        return this.cutDescription;
+    }
 
-	public void setCutDescription(String cutDescription) {
-		this.cutDescription = cutDescription;
-	}
+    public void setCutDescription(String cutDescription) {
+        this.cutDescription = cutDescription;
+    }
 
 }

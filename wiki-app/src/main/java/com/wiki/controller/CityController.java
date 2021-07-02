@@ -29,7 +29,7 @@ public class CityController {
 	@Autowired
 	CityService cityService;
 
-	@GetMapping("/lista")
+	@GetMapping("/list")
 	public ResponseEntity<List<City>> list() {
 		List<City> list = cityService.findAll();
 		return new ResponseEntity(list, HttpStatus.OK);

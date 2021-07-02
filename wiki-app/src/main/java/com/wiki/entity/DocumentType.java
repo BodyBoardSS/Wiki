@@ -1,74 +1,64 @@
 package com.wiki.entity;
 
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 /**
- * The persistent class for the document_type database table.
- * 
+ * @author BodyBoardSS
+ * Date: 2021-06-30
  */
 @Entity
 @Table(name = "document_type")
 @NamedQuery(name = "DocumentType.findAll", query = "SELECT d FROM DocumentType d")
 public class DocumentType implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name = "DCT_ID")
-	private int dctId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "DCT_ID")
+    private int dctId;
 
-	@Column(name = "DCT_DESCRIPTION")
-	private String dctDescription;
+    @Column(name = "DCT_DESCRIPTION")
+    private String dctDescription;
 
-	@OneToMany(mappedBy = "documentType")
-	private List<Document> documents;
+    @Column(name = "DCT_MASK")
+    private String dctMask;
 
-	public DocumentType() {
-	}
+    @Column(name = "DCT_PLACEHOLDER")
+    private String dctPlaceholder;
 
-	public int getDctId() {
-		return this.dctId;
-	}
+    public DocumentType() {
+    }
 
-	public void setDctId(int dctId) {
-		this.dctId = dctId;
-	}
+    public int getDctId() {
+        return dctId;
+    }
 
-	public String getDctDescription() {
-		return this.dctDescription;
-	}
+    public void setDctId(int dctId) {
+        this.dctId = dctId;
+    }
 
-	public void setDctDescription(String dctDescription) {
-		this.dctDescription = dctDescription;
-	}
+    public String getDctDescription() {
+        return dctDescription;
+    }
 
-	public List<Document> getDocuments() {
-		return this.documents;
-	}
+    public void setDctDescription(String dctDescription) {
+        this.dctDescription = dctDescription;
+    }
 
-	public void setDocuments(List<Document> documents) {
-		this.documents = documents;
-	}
+    public String getDctMask() {
+        return dctMask;
+    }
 
-	public Document addDocument(Document document) {
-		getDocuments().add(document);
-		document.setDocumentType(this);
+    public void setDctMask(String dctMask) {
+        this.dctMask = dctMask;
+    }
 
-		return document;
-	}
+    public String getDctPlaceholder() {
+        return dctPlaceholder;
+    }
 
-	public Document removeDocument(Document document) {
-		getDocuments().remove(document);
-		document.setDocumentType(null);
-
-		return document;
-	}
-
+    public void setDctPlaceholder(String dctPlaceholder) {
+        this.dctPlaceholder = dctPlaceholder;
+    }
 }
