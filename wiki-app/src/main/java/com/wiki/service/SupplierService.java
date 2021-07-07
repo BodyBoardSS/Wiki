@@ -1,14 +1,15 @@
 package com.wiki.service;
 
-import com.wiki.entity.Supplier;
-import com.wiki.repository.SupplierRepository;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Optional;
+import com.wiki.entity.Supplier;
+import com.wiki.repository.SupplierRepository;
 
 /**
  * @author kevin_orellana
@@ -23,8 +24,8 @@ public class SupplierService {
         return supplierRepository.findAll();
     }
 
-    public Supplier getOne(Integer integer) {
-        return supplierRepository.getOne(integer);
+    public Optional<Supplier> getOne(int id) {
+        return supplierRepository.findById(id);
     }
 
     public <S extends Supplier> S save(S s) {
